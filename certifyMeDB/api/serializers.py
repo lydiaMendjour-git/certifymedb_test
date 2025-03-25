@@ -16,7 +16,8 @@ from .models import Account
 from .models import OfficialUniversity
 from .models import University
 from .models import Student
-
+from .models import Company
+from .models import Ministry
 
 #serializer of account 
 class AccountSerializer(serializers.ModelSerializer):
@@ -55,4 +56,18 @@ class UniversitySerializer(serializers.ModelSerializer):
 class StudentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Student
+        fields = '__all__'
+
+
+
+#serailizer of companies
+class CompanySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Company
+        fields = '__all__'
+
+#serailizer of ministry
+class MinistrySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Ministry
         fields = '__all__'

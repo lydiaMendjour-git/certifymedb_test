@@ -10,7 +10,10 @@ from .models import University
 from .serializers import UniversitySerializer
 from .models import Student
 from .serializers import StudentSerializer
-
+from .models import Ministry
+from .serializers import MinistrySerializer
+from .models import Company
+from .serializers import CompanySerializer
 
 
 #viewset of account
@@ -38,3 +41,14 @@ class StudentViewSet(viewsets.ModelViewSet):
     """
     queryset = Student.objects.all()  # Récupère tous les étudiants
     serializer_class = StudentSerializer  # Utilise le serializer défini
+
+
+#viewset of companies
+class CompanyViewSet(viewsets.ModelViewSet):
+    queryset = Company.objects.all()
+    serializer_class = CompanySerializer
+
+#viewset of ministry
+class MinistryViewSet(viewsets.ModelViewSet):
+    queryset = Ministry.objects.all()
+    serializer_class = MinistrySerializer

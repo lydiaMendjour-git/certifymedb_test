@@ -8,39 +8,19 @@ from .views import AccountViewSet
 from .views import OfficialUniversityViewSet
 from .views import UniversityViewSet
 from .views import StudentViewSet
+from .views import MinistryViewSet
+from .views import CompanyViewSet
 
 
+router = DefaultRouter()# Création du routeur 
 
-#configure urls for accounts
-router = DefaultRouter() # Création du routeur 
 router.register(r'accounts', AccountViewSet)  # Enregistrement de la route pour accounts
+router.register(r'official-universities', OfficialUniversityViewSet)# Enregistrement de la route off unis
+router.register(r'universities', UniversityViewSet)# Enregistrement de la route pour unis
+router.register(r'students', StudentViewSet, basename='student')# Enregistrement de la route pour students
+router.register(r'companies', CompanyViewSet)# Enregistrement de la route pour companies
+router.register(r'ministries', MinistryViewSet)# Enregistrement de la route pour minstry
 
 urlpatterns = [
-    path('api/', include(router.urls)),  # Inclusion de toutes les routes générées automatiquement get post delete..
+    path('', include(router.urls)),# Inclusion de toutes les routes générées automatiquement 
 ]
-
-
-
-#configure urls for official unis
-router = DefaultRouter()
-router.register(r'official-universities', OfficialUniversityViewSet)
-
-urlpatterns = [
-    path('', include(router.urls)),
-]
-
-#configure urls for our plateforme unis
-router = DefaultRouter()
-router.register(r'universities', UniversityViewSet)
-
-urlpatterns = [
-    path('', include(router.urls)),
-]
-
-#configure urls for students
-
-router = DefaultRouter()
-router.register(r'students', StudentViewSet, basename='student')
-
-urlpatterns = [
-    path('', include(router.urls)),  ]

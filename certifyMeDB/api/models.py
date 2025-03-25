@@ -87,6 +87,9 @@ class University(models.Model):
     def __str__(self):
         return f"{self.name} - {self.id_account.username}"  # Affiche le nom + user associé
 
+
+
+#les etudiants de chaque université cette table est initialement vide apres labonnement de une uni sa bdd va etre integrée dans cette table 
 class Student(models.Model):
     id_student = models.AutoField(primary_key=True)
     id_account = models.OneToOneField(Account, on_delete=models.CASCADE, related_name="student")  # Un compte par étudiant
@@ -97,3 +100,25 @@ class Student(models.Model):
 
     def __str__(self):
         return f"{self.first_name} {self.last_name} - {self.matricule}"
+    
+
+#la table entreprise
+class Company(models.Model):
+    id_company = models.AutoField(primary_key=True)
+    id_account = models.OneToOneField(Account, on_delete=models.CASCADE, related_name="company")
+    name = models.CharField(max_length=255)
+    address = models.TextField()
+    phone = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.name
+
+#la table ministere
+
+class Ministry(models.Model):
+    id_ministry = models.AutoField(primary_key=True)
+    id_account = models.OneToOneField(Account, on_delete=models.CASCADE, related_name="ministry")
+    department_name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.department_name
